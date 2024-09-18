@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="taskboard-picker">
+  <div class="picker">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="">
         <div
@@ -25,7 +25,7 @@
         <div class=""
           [class.error]="loginForm.controls['taskboardPassword'].dirty && loginForm.hasError('required','taskboardPassword')">
           <span class="fa fa-lock px-2"></span>
-          <input formControlName="taskboardPassword" [type]="type" placeholder="Taskboard Password">
+          <input formControlName="taskboardName" [type]="type" placeholder="Taskboard Password">
           <button type="button" (click)="hideShowPassword()"
             class="" style="border:none;">
             <span class="fa {{eyeIcon}}"></span>
@@ -41,3 +41,29 @@
     </form>
   </div>
 </div>
+<mat-card class="container">
+  <mat-card-content class="signup">
+    <div class="h2">Choose Taskboard</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field>
+        <input matInput formControlName="taskboardName" type="text" placeholder="Taskboard Name" required/>
+        <mat-error>
+          *Taskboard Name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="taskboardName" type="text" placeholder="Taskboard Name" required/>
+        <mat-error>
+          *Taskboard Name Is Required
+        </mat-error>
+      </mat-form-field>
+      <button type="submit">
+        Choose Taskboard
+      </button>
+      <div>
+      Don't have a taskboard?
+      <a id="forget" routerLink="/taskboard-creator">Create Taskboard</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
