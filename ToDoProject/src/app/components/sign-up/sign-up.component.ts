@@ -63,14 +63,15 @@ export class SignUpComponent implements OnInit {
           this.signupForm.reset();
           this.router.navigate(['login']);
         },
-        error: (response) => {
-          console.log('Error response:', response);
-          if (response.error?.Message === 'Email Already Exists') {
-            this.error = 'This email is already registered. Please use a different email.';
+        error: (errorResponse) => {
+          console.log('Error response:', errorResponse);
+
+          if (errorResponse.status === 403) {
+            const errorMessage = errorResponse.error?.Message || 'Email already exists';
+            alert(errorMessage);
           } else {
-            this.error = response.error?.Message || 'Signup failed. Please try again.';
+            alert('An unexpected error occurred. Please try again.');
           }
-          this.showModal = true;
         },
       });
     } else {
@@ -78,6 +79,7 @@ export class SignUpComponent implements OnInit {
       this.showModal = true;
     }
   }
+
 
   private decodeToken(token: string) {
     return JSON.parse(atob(token.split('.')[1]));

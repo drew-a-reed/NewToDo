@@ -4,6 +4,8 @@ import { HttpClient } from "@angular/common/http"
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Token } from '@angular/compiler';
+import { catchError, Observable } from 'rxjs';
+import { IUser } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +20,12 @@ export class AuthService {
     this.userPayload = this.decodeToken();
    }
 
-  signUp(userObj:any){
-    return this.http.post<any>(`${this.baseUrl}register`, userObj);
+  signUp(userObj:any): Observable<any>{
+    return this.http.post<any>(`${this.baseUrlDev}register`, userObj);
   }
 
   login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj);
+    return this.http.post<any>(`${this.baseUrlDev}authenticate`, loginObj);
   }
 
   storeToken(tokenValue: string){
@@ -77,6 +79,6 @@ export class AuthService {
   }
 
   renewToken(tokenApi: TokenApiModel){
-    return this.http.post<any>(`${this.baseUrl}refresh`, tokenApi);
+    return this.http.post<any>(`${this.baseUrlDev}refresh`, tokenApi);
   }
 }

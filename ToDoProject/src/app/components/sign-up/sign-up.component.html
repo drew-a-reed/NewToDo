@@ -1,52 +1,38 @@
-<div class="container">
-  <div class="signup">
-    <div class="signup-title h2">
-    <h3>Sign Up</h3>
-  </div>
-    <div class="signup-form">
-      <form [formGroup]="signupForm">
-        <div class="signup-form-input">
-          <div class="" [class.error]="signupForm.controls['firstName'].dirty && signupForm.hasError('required', 'firstName')">
-            <span class="fa fa-user p-2"></span>
-            <input formControlName="firstName" type="text" placeholder="First Name" />
-          </div>
-        </div>
-        <small *ngIf="signupForm.controls['firstName'].dirty && signupForm.hasError('required', 'firstName')" class="text-danger">*First name is required</small>
-        <div class="signup-form-input">
-          <div class="" [class.error]="signupForm.controls['lastName'].dirty && signupForm.hasError('required', 'lastName')">
-            <span class=""></span>
-            <input formControlName="lastName" type="text" placeholder="Last Name" />
-          </div>
-        </div>
-        <small *ngIf="signupForm.controls['lastName'].dirty && signupForm.hasError('required', 'lastName')" class="text-danger">*Last name is required</small>
-        <div class="signup-form-input">
-          <div class="" [class.error]="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')">
-            <span class=""></span>
-            <input formControlName="email" type="text" placeholder="Email" />
-          </div>
-        </div>
-        <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
-        <div class="signup-form-input">
-          <div class="" [class.error]="signupForm.controls['password'].dirty && signupForm.hasError('required','password')">
-            <span class="fa fa-lock px-2"></span>
-            <input formControlName="password" [type]="type" placeholder="Password">
-              <button type="button" (click)="hideShowPassword()" class="" style="border:none;">
-                <span class="fa {{eyeIcon}}"></span>
-              </button>
-          </div>
-        </div>
-        <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')" class="text-danger">*Email is required</small>
-        <button (click)="onSignup()" type="submit" class="signup-form-button">
-          Sign Up
-        </button>
-        <div class="signup-login">
-          Already have an account?
-          <a id="forget" routerLink="/login">Login</a>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div *ngIf="showModal" class="alert alert-danger" role="alert">
-  {{ error }}
-</div>
+<mat-card class="container">
+  <mat-card-content class="signup">
+    <div class="h2">Sign Up</div>
+    <form [formGroup]="signupForm">
+      <mat-form-field>
+        <input matInput formControlName="firstName" type="text" placeholder="First Name" required/>
+        <mat-error>
+          *First Name Is Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="lastName" type="text" placeholder="Last Name" required/>
+        <mat-error>
+          *Last Name Is Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="email" type="text" placeholder="Email" required/>
+        <mat-error>
+          *Email Is Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="password" type="text" placeholder="Password" required/>
+        <mat-error>
+          *Password Is Required
+        </mat-error>
+      </mat-form-field>
+      <button (click)="onSignup()" type="submit">
+        Sign Up
+      </button>
+      <div class="signup-login">
+      Already have an account?
+      <a id="forget" routerLink="/login">Login</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

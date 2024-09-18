@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="taskboard-picker">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="">
+        <div
+          [class.error]="loginForm.controls['taskboardName'].dirty && loginForm.hasError('required','taskboardName')">
+          <mat-form-field appearance="outline" class="taskboard-picker">
+            <mat-label>Choose Taskboard</mat-label>
+            <input type="text"
+              placeholder="Enter Taskboard Name"
+              matInput
+              formControlName="taskboardName"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let taskboard of filteredTaskboards | async" [value]="taskboard.taskboardName">
+                {{ taskboard.taskboardName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+      <small *ngIf="loginForm.controls['taskboardName'].dirty && loginForm.hasError('required','taskboardName')"
+        class="text-danger">*Taskboard Name is required*</small>
+      <div class="" style="font-size: 1.25rem;">
+        <div class=""
+          [class.error]="loginForm.controls['taskboardPassword'].dirty && loginForm.hasError('required','taskboardPassword')">
+          <span class="fa fa-lock px-2"></span>
+          <input formControlName="taskboardPassword" [type]="type" placeholder="Taskboard Password">
+          <button type="button" (click)="hideShowPassword()"
+            class="" style="border:none;">
+            <span class="fa {{eyeIcon}}"></span>
+          </button>
+        </div>
+      </div>
+      <small
+        *ngIf="loginForm.controls['taskboardPassword'].dirty && loginForm.hasError('required','taskboardPassword')"
+        class="text-danger">*Taskboard Password is required*</small>
+      <button type="submit" class="btn btn-primary btn-block mt-4 w-100">See Taskboard</button>
+      <div class="">Don't have a taskboard? <a id="forgot" href="#"
+          routerLink="/taskboard-creator">Create One Here</a> </div>
+    </form>
+  </div>
+</div>

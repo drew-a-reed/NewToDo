@@ -20,6 +20,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { TaskboardPickerComponent } from './components/taskboard-picker/taskboard-picker.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     AppComponent,
     LoginComponent,
     SignUpComponent,
+    TaskboardPickerComponent,
+    NavbarComponent,
+    TaskboardCreatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,19 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatCommonModule,
+    MatButtonModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {

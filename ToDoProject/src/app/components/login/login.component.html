@@ -1,39 +1,34 @@
+<mat-card class="container">
+  <mat-card-content class="login">
+    <div class="h2">Login</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field>
+        <input matInput formControlName="email" type="text" placeholder="Email" required/>
+        <mat-error>
+          *Email Is Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="password" type="text" placeholder="Password" required/>
+        <mat-error>
+          *Password Is Required
+        </mat-error>
+      </mat-form-field>
+      <button (click)="onLogin()" type="submit">
+        Sign Up
+      </button>
+      <div class="signup-login">
+      Don't an account?
+      <a id="forget" routerLink="/signup">Sign Up</a>
+      <!-- <div class=""> <a id="forgot" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" class="">Forgot
+        password?</a> </div> -->
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
 
-<div class="container">
-  <div class="login">
-  <div>
-    <h3>Login</h3>
-  </div>
-  <div>
-    <!-- <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-              <div class="form-group pt-3">
-                <div class="input-field"
-                  [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">
-                  <span class="fa fa-user p-2"></span> <input formControlName="email" type="text"
-                    placeholder="Email" required>
-                </div>
-              </div>
-              <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"
-                class="text-danger">*Email is required*</small>
-              <div class="form-group pt-3">
-                <div class="input-field"
-                  [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
-                  <span class="fa fa-lock px-2"></span> <input formControlName="password" [type]="type"
-                    placeholder="Password"> <button type="button" (click)="hideShowPassword()"
-                    class="bg-white text-muted" style="border:none;"> <span class="fa {{eyeIcon}}"></span> </button>
-                </div>
-              </div>
-              <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
-                class="text-danger">*Password is required*</small>
-              <div class="form-inline fr mt-4"> <a id="forgot" data-bs-toggle="modal"
-                  data-bs-target="#forgotPasswordModal" class="font-weight-bold">Forgot password?</a> </div>
-              <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
-              <div class="text-center pt-4 text-muted">Don't have an account? <a id="forgot" href="#"
-                  routerLink="/signup">Sign up</a> </div>
-            </form> -->
-  </div>
-</div>
-</div>
+
+
 <!-- <div id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
   aria-hidden="true">
   <div >
@@ -46,8 +41,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group pt-3">
-          <div class="input-field"> <span class="fa fa-user p-2"></span> <input [(ngModel)]="resetPasswordEmail"
+        <div class="">
+          <div class=""> <span class="fa fa-user p-2"></span> <input [(ngModel)]="resetPasswordEmail"
               (ngModelChange)="checkValidEmail($event)" type="text" placeholder="Email"> </div>
         </div>
         <small *ngIf="!resetPasswordEmail" class="text-danger">*Email is required*</small>
