@@ -3,29 +3,30 @@
     <div class="h2">Login</div>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field>
-        <input matInput formControlName="email" type="text" placeholder="Email" required/>
+        <input matInput formControlName="email" type="text" placeholder="Email" required />
         <mat-error>
           *Email Is Required
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <!-- <span class="fa fa-lock px-2"></span> -->
-        <input matInput formControlName="password" [type]="type" placeholder="Password">
-        <button type="button" (click)="hideShowPassword()" class="" style="border:none;">
-          <span class="fa {{eyeIcon}}"></span>
-        </button>
+        <span class="password">
+          <input matInput formControlName="password" [type]="type" placeholder="Password">
+          <button type="button" (click)="hideShowPassword()" class="" style="border:none;">
+            <span class="material-icons">{{ eyeIcon }}</span>
+          </button>
+        </span>
         <mat-error>
           *Password Is Required
         </mat-error>
       </mat-form-field>
-      <button (click)="onLogin()" type="submit">
+      <button (click)="onLogin()" type="submit" class="login-button">
         Login
       </button>
       <div class="signup-login">
-      Don't an account?
-      <a id="forget" routerLink="/signup">Sign Up</a>
-      <!-- <div class=""> <a id="forgot" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" class="">Forgot
-        password?</a> </div> -->
+        Don't an account?
+        <a id="forget" routerLink="/signup">Sign Up</a>
+        <div class=""> <a id="forgot" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" class="">Forgot
+            password?</a> </div>
       </div>
     </form>
   </mat-card-content>
@@ -33,12 +34,11 @@
 
 
 
-<!-- <div id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
-  aria-hidden="true">
-  <div >
-    <div >
-      <div >
-        <p  id="forgotPasswordModalLabel"> <span style="font-size: 25px;font-weight:700">Forget your
+<div id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div>
+    <div>
+      <div>
+        <p id="forgotPasswordModalLabel"> <span style="font-size: 25px;font-weight:700">Forget your
             password?</span><br>
           <small>Please provide your E-mail we will send the reset link</small>
         </p>
@@ -58,4 +58,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>

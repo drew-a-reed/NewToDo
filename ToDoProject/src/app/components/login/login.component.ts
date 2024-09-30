@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   type: string = 'password';
   isText: boolean = false;
-  eyeIcon: string = 'fa-eye-slash';
+  eyeIcon: string = 'visibility_off';
   loginForm!: FormGroup;
   showModal: boolean = false;
   passwordState: string = 'Show';
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
   hideShowPassword() {
     this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? (this.eyeIcon = 'visibility') : (this.eyeIcon = 'visibility_off');
     this.isText ? (this.type = 'text') : (this.type = 'password');
     this.isText ? (this.passwordState = 'Hide') : (this.passwordState = 'Show');
   }

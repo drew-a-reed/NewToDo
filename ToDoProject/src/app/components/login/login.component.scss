@@ -29,7 +29,7 @@
     font-weight: bold;
   }
 
-  button {
+  button.login-button {
     justify-content: center;
     margin: 0 10%;
     padding: 5px;
@@ -37,5 +37,15 @@
     font-size: clamp(1.17rem, 1.17rem, 1.75rem);
     background-color: #2278dd;
     border: none;
+  }
+}
+
+.password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: transparent;
   }
 }

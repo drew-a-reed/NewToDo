@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignUpComponent implements OnInit {
   type: string = 'password';
   isText: boolean = false;
-  eyeIcon: string = 'fa-eye-slash';
+  eyeIcon: string = 'visibility_off';
   signupForm!: FormGroup;
   showModal: boolean = false;
   error: string = 'Login failed. Please check your credentials.';
@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
 
   hideShowPassword() {
     this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? (this.eyeIcon = 'visibility') : (this.eyeIcon = 'visibility_off');
     this.isText ? (this.type = 'text') : (this.type = 'password');
     this.isText ? (this.passwordState = 'Hide') : (this.passwordState = 'Show');
   }

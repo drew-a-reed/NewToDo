@@ -21,16 +21,17 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <span class="fa fa-lock px-2"></span>
-        <input matInput formControlName="password" [type]="type" placeholder="Password">
-        <button type="button" (click)="hideShowPassword()" class="bg-white text-muted" style="border:none;">
-          <span class="fa {{eyeIcon}}"></span>
-        </button>
+        <span class="password">
+          <input matInput formControlName="password" [type]="type" placeholder="Password">
+          <button type="button" (click)="hideShowPassword()" class="" style="border:none;">
+            <span class="material-icons">{{ eyeIcon }}</span>
+          </button>
+        </span>
         <mat-error>
           *Password Is Required
         </mat-error>
       </mat-form-field>
-      <button (click)="onSignup()" type="submit">
+      <button (click)="onSignup()" type="submit" class="signup-button">
         Sign Up
       </button>
       <div class="signup-login">
