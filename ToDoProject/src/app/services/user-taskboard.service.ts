@@ -14,11 +14,11 @@ export class UserTaskboardService {
 
   addUserToTaskboard(userTaskboard: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.baseUrl}`, userTaskboard, { headers });
+    return this.http.post<any>(`${this.baseUrlDev}`, userTaskboard, { headers });
   }
 
   getUserTaskboards(userId: any){
-    return this.http.get<any>(`${this.baseUrl}${userId}`);
+    return this.http.get<any>(`${this.baseUrlDev}${userId}`);
   }
 
 }

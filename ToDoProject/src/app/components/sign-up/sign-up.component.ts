@@ -32,21 +32,6 @@ export class SignUpComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-    // google.accounts.id.initialize({
-    //   client_id:
-    //     '257479571203-af1404qragk94fe2fpnj60s3616t7k8c.apps.googleusercontent.com',
-    //   callback: (response: any) => {
-    //     this.handleLogin(response);
-    //   },
-    // });
-
-    // google.accounts.id.renderButton(document.getElementById('google-btn'), {
-    //   theme: 'filled_blue',
-    //   size: 'large',
-    //   shape: 'rectangle',
-    //   width: 350,
-    // });
   }
 
   hideShowPassword() {
@@ -79,7 +64,6 @@ export class SignUpComponent implements OnInit {
       this.showModal = true;
     }
   }
-
 
   private decodeToken(token: string) {
     return JSON.parse(atob(token.split('.')[1]));
