@@ -5,8 +5,14 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TaskboardPickerComponent } from './components/taskboard-picker/taskboard-picker.component';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
+import { TaskboardComponent } from './components/taskboard/taskboard.component';
 
 const routes: Routes = [
+  {
+    path: 'taskboard',
+    component: TaskboardComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'taskboard-creator',
     component: TaskboardCreatorComponent,

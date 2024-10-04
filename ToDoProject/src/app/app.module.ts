@@ -23,6 +23,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TaskboardPickerComponent } from './components/taskboard-picker/taskboard-picker.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
+import { TaskboardComponent } from './components/taskboard/taskboard.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { TaskboardCreatorComponent } from './components/taskboard-creator/taskbo
     TaskboardPickerComponent,
     NavbarComponent,
     TaskboardCreatorComponent,
+    TaskboardComponent,
   ],
   imports: [
     BrowserModule,

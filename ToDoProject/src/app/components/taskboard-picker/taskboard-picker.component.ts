@@ -22,6 +22,7 @@ export class TaskboardPickerComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = 'visibility_off';
   passwordState: string = 'Show';
+  userRole: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,10 +35,17 @@ export class TaskboardPickerComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.auth.getUserId();
 
+    this.userRole = this.auth.getRoleFromToken();
+
+
     this.loginForm = this.formBuilder.group({
       taskboardName: ['', Validators.required],
       taskboardPassword: ['', Validators.required],
     });
+
+    if(this.userRole == 'Demo'){
+
+    }
 
     if (this.userId) {
       this.getAllTaskboards(this.userId);
@@ -68,7 +76,7 @@ export class TaskboardPickerComponent implements OnInit {
             }
           });
           this.loginForm.reset();
-          this.router.navigate(['noteboard'], { queryParams: { taskboardId: this.taskboardId } });
+          this.router.navigate(['taskboard'], { queryParams: { taskboardId: this.taskboardId } });
         },
         error: (response) => {
           alert('Taskboard Name/password do not match.');
