@@ -24,6 +24,7 @@ import { TaskboardPickerComponent } from './components/taskboard-picker/taskboar
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
 import { TaskboardComponent } from './components/taskboard/taskboard.component';
+import { TaskcardComponent } from './components/taskcard/taskcard.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { TaskboardComponent } from './components/taskboard/taskboard.component';
     NavbarComponent,
     TaskboardCreatorComponent,
     TaskboardComponent,
+    TaskcardComponent,
   ],
   imports: [
     BrowserModule,

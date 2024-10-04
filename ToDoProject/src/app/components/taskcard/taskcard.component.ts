@@ -5,13 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 import { ITask } from './../../models/task';
 
-
 @Component({
-  selector: 'app-taskboard',
-  templateUrl: './taskboard.component.html',
-  styleUrls: ['./taskboard.component.scss']
+  selector: 'app-taskcard',
+  templateUrl: './taskcard.component.html',
+  styleUrls: ['./taskcard.component.scss']
 })
-export class TaskboardComponent implements OnInit {
+export class TaskcardComponent implements OnInit {
   taskboardId: string | null = null;
   tasks: ITask[] = [];
   statuses: string[] = ['To Do', 'Doing', 'Done'];

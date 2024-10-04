@@ -1,0 +1,16 @@
+.container {
+  margin-top: 1rem;
+}
+
+.taskboard {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &--status {
+    list-style: none;
+    min-width: 250px;
+    text-align: center;
+  }
+}

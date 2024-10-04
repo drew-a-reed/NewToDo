@@ -1,1 +1,8 @@
-<p>taskboard works!</p>
+<div class="container">
+  <div class="taskboard">
+    <div class="taskboard--status" *ngFor="let status of statuses">
+      <h2 class="h2">{{status}}</h2>
+      <app-taskcard></app-taskcard>
+    </div>
+  </div>
+</div>

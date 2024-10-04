@@ -38,14 +38,19 @@ export class TaskboardPickerComponent implements OnInit {
     this.userRole = this.auth.getRoleFromToken();
 
 
-    this.loginForm = this.formBuilder.group({
-      taskboardName: ['', Validators.required],
-      taskboardPassword: ['', Validators.required],
-    });
-
     if(this.userRole == 'Demo'){
-
+      this.loginForm = this.formBuilder.group({
+        taskboardName: ['Demo Taskboard', Validators.required],
+        taskboardPassword: ['Password123!', Validators.required],
+      });
+    } else {
+      this.loginForm = this.formBuilder.group({
+        taskboardName: ['', Validators.required],
+        taskboardPassword: ['', Validators.required],
+      });
     }
+
+
 
     if (this.userId) {
       this.getAllTaskboards(this.userId);
