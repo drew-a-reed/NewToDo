@@ -39,6 +39,8 @@ export class TaskboardPickerComponent implements OnInit {
 
 
     if(this.userRole == 'Demo'){
+      console.log("here");
+
       this.loginForm = this.formBuilder.group({
         taskboardName: ['Demo Taskboard', Validators.required],
         taskboardPassword: ['Password123!', Validators.required],
