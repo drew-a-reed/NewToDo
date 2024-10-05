@@ -14,7 +14,7 @@ import { ITask } from './../../models/task';
 export class TaskboardComponent implements OnInit {
   taskboardId: string | null = null;
   tasks: ITask[] = [];
-  statuses: string[] = ['To Do', 'Doing', 'Done'];
+  statuses: string[] = ['To Do', 'In Progress', 'Done', 'Stuck'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,6 +39,19 @@ export class TaskboardComponent implements OnInit {
       console.log(this.tasks);
 
     })
+  }
+
+  getBackgroundColor(priority: string): string {
+    switch (priority) {
+      case 'Low':
+        return '#238240';
+      case 'Medium':
+        return '#fce803';
+      case 'High':
+        return '#B3180C';
+      default:
+        return '#000';
+    }
   }
 
 }

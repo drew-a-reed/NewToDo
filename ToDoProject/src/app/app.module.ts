@@ -24,7 +24,7 @@ import { TaskboardPickerComponent } from './components/taskboard-picker/taskboar
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
 import { TaskboardComponent } from './components/taskboard/taskboard.component';
-import { TaskcardComponent } from './components/taskcard/taskcard.component';
+import { TaskStatusFilterPipe } from './pipes/task-status-filter.pipe';
 
 
 @NgModule({
@@ -36,7 +36,7 @@ import { TaskcardComponent } from './components/taskcard/taskcard.component';
     NavbarComponent,
     TaskboardCreatorComponent,
     TaskboardComponent,
-    TaskcardComponent,
+    TaskStatusFilterPipe,
   ],
   imports: [
     BrowserModule,

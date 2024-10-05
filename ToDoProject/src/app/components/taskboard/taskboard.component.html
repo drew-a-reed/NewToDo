@@ -1,8 +1,14 @@
-<div class="container">
-  <div class="taskboard">
-    <div class="taskboard--status" *ngFor="let status of statuses">
-      <h2 class="h2">{{status}}</h2>
-      <app-taskcard></app-taskcard>
+<div class="taskboard">
+  <div class="task-container" *ngFor="let status of statuses">
+    <div class="h2">{{ status }}</div>
+    <div *ngFor="let task of tasks | taskStatusFilter:status">
+      <div class="task-container-card">
+        <div class="h4">{{ task.title }}</div>
+        <div [ngStyle]="{ 'background': getBackgroundColor(task.priority) }" style="height: 0.1rem;"></div>
+        <p>{{ task.description }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <p><strong>Due:</strong> {{ task.dueDate | date }}</p>
+      </div>
     </div>
   </div>
 </div>
