@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop,moveItemInArray,transferArrayItem,} from '@angular/cdk/drag-drop';
-import {FormGroup,FormBuilder,Validators,FormControl,} from '@angular/forms';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 import { ITask } from './../../models/task';
 
-
 @Component({
   selector: 'app-taskboard',
   templateUrl: './taskboard.component.html',
-  styleUrls: ['./taskboard.component.scss']
+  styleUrls: ['./taskboard.component.scss'],
 })
 export class TaskboardComponent implements OnInit {
   taskboardId: string | null = null;
   tasks: ITask[] = [];
+  inProgress: ITask[] = [];
+  done: ITask[] = [];
+  stuck: ITask[] = [];
   statuses: string[] = ['To Do', 'In Progress', 'Done', 'Stuck'];
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private taskService: TaskService,
-  ){}
+    private taskService: TaskService
+  ) {}
 
   ngOnInit(): void {
-
     this.activatedRoute.queryParams.subscribe((val) => {
       this.taskboardId = val['taskboardId'];
     });
@@ -30,18 +35,15 @@ export class TaskboardComponent implements OnInit {
     if (this.taskboardId) {
       this.getAllTasks(this.taskboardId);
     }
-
   }
 
-  getAllTasks(taskboardId: string){
+  getAllTasks(taskboardId: string) {
     this.taskService.getAllTasks(taskboardId).subscribe((response) => {
       this.tasks = response;
-      console.log(this.tasks);
-
-    })
+    });
   }
 
-  getBackgroundColor(priority: string): string {
+  getPriorityColor(priority: string): string {
     switch (priority) {
       case 'Low':
         return '#238240';
@@ -54,4 +56,58 @@ export class TaskboardComponent implements OnInit {
     }
   }
 
+  drop(event: CdkDragDrop<ITask[]>, category: string) {
+    let targetArray: ITask[] = [];
+    let status: string;
+
+    switch (category) {
+      case 'To Do':
+        targetArray = this.tasks;
+        status = 'To Do';
+        break;
+      case 'In Progress':
+        targetArray = this.inProgress;
+        status = 'In Progress';
+        break;
+      case 'Done':
+        targetArray = this.done;
+        status = 'Done';
+        break;
+      case 'Stuck':
+        targetArray = this.stuck;
+        status = 'Stuck';
+        break;
+      default:
+        return;
+    }
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      const movedTask = event.previousContainer.data[event.previousIndex];
+      movedTask.status = status;
+
+      transferArrayItem(
+        event.previousContainer.data,
+        targetArray,
+        event.previousIndex,
+        event.currentIndex
+      );
+
+      this.taskService.updateTask(movedTask).subscribe({
+        next: (response) => {
+          if (this.taskboardId) {
+            this.getAllTasks(this.taskboardId);
+          }
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+    }
+  }
 }

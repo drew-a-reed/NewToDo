@@ -13,8 +13,23 @@
   flex-direction: column;
   margin-top: 1rem;
 
+  mat-expansion-panel {
+    background-color: transparent;
+    padding: 1rem 0;
+
+    &-header {
+      padding: 1rem;
+    }
+  }
+
+  &-task {
+    margin-top: 1rem;
+    background-color: rgba(94, 101, 114, 0.25);
+    border-radius: 5px;
+  }
+
   &-card {
-    padding: 0.5rem 0;
+    line-height: 1.5;
   }
 
   .h2 {
