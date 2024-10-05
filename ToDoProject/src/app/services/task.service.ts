@@ -17,18 +17,18 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getAllTasks(taskboardId: string) {
-    return this.http.get<ITask[]>(`${this.baseUrlDev}task?taskboardId=${taskboardId}`);
+    return this.http.get<ITask[]>(`${this.baseUrl}task?taskboardId=${taskboardId}`);
   }
 
   addTask(task: ITask) {
-    return this.http.post<ITask>(`${this.baseUrlDev}task`, task);
+    return this.http.post<ITask>(`${this.baseUrl}task`, task);
   }
 
   updateTask(task: ITask) {
-    return this.http.put<any>(`${this.baseUrlDev}task/${task.taskId}`, task);
+    return this.http.put<any>(`${this.baseUrl}task/${task.taskId}`, task);
   }
 
   deleteTask(taskId: string) {
-    return this.http.delete<ITask>(`${this.baseUrlDev}task/${taskId}`);
+    return this.http.delete<ITask>(`${this.baseUrl}task/${taskId}`);
   }
 }

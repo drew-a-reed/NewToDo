@@ -14,25 +14,25 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAllUsers() {
-    return this.http.get<any>(`${this.baseUrlDev}user/users`);
+    return this.http.get<any>(`${this.baseUrl}user/users`);
   }
 
   getUserById(userId: string): Observable<IUser> {
-    return this.http.get<IUser>(`${this.baseUrlDev}user/${userId}`);
+    return this.http.get<IUser>(`${this.baseUrl}user/${userId}`);
   }
 
   addUserTasks(userIds: string[], taskId: string) {
     const userTasks = userIds.map((userId) => {
       return { userId, taskId: taskId };
     });
-    return this.http.post<any>(`${this.baseUrlDev}usertask/user-tasks`, userTasks);
+    return this.http.post<any>(`${this.baseUrl}usertask/user-tasks`, userTasks);
   }
 
   getAssignedUsersForTask(taskId: string) {
-    return this.http.get<IUser[]>(`${this.baseUrlDev}usertask/users/${taskId}/tasks`);
+    return this.http.get<IUser[]>(`${this.baseUrl}usertask/users/${taskId}/tasks`);
   }
 
   deleteUsersFromTask(taskId: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrlDev}usertask/tasks/${taskId}`);
+    return this.http.delete<any>(`${this.baseUrl}usertask/tasks/${taskId}`);
   }
 }
