@@ -1,25 +1,32 @@
 <div class="taskboard" cdkDropListGroup>
-  <div class="task-container" *ngFor="let status of statuses" cdkDropList
-    [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
+  <div class="task-container" *ngFor="let status of statuses" cdkDropList [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
     <div class="h2">{{ status }}</div>
     <div *ngFor="let task of tasks | taskStatusFilter:status" cdkDrag class="task-container-task">
       <mat-accordion multi>
-        <mat-expansion-panel class="task-container-panel">
+        <mat-expansion-panel>
           <mat-expansion-panel-header class="h6">
             <mat-panel-title> {{ task.title }} </mat-panel-title>
-            <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;">
-            </div>
+            <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;"></div>
             <!-- <mat-panel-description>
               <mat-icon></mat-icon>
             </mat-panel-description> -->
           </mat-expansion-panel-header>
-          <div class="task-container-card">
-            <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;">
-            </div>
-            <p>{{ task.description }}</p>
-            <p><strong>Priority:</strong> {{ task.priority }}</p>
-            <p><strong>Due:</strong> {{ task.dueDate | date }}</p>
-          </div>
+          <mat-card class="task-container-card">
+            <mat-card-content>
+              <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;"></div>
+              <p>{{ task.description }}</p>
+              <p><span>Priority:</span> {{ task.priority }}</p>
+              <p><span>Due:</span> {{ task.dueDate | date }}</p>
+              <div class="task-container-card-users">
+                <p><span>Users:</span></p>
+                <mat-list *ngIf="task['taskId'] && taskUserMap[task['taskId']]" style="padding:0;" role="list">
+                  <mat-list-item *ngFor="let user of taskUserMap[task['taskId']]" role="listitem">
+                    {{ user.firstName }}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </mat-card-content>
+          </mat-card>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

@@ -13,6 +13,12 @@
   flex-direction: column;
   margin-top: 1rem;
 
+  &-task {
+    margin-top: 1rem;
+    background-color: rgba(94, 101, 114, 0.25);
+    border-radius: 5px;
+  }
+
   mat-expansion-panel {
     background-color: transparent;
     padding: 1rem 0;
@@ -22,14 +28,30 @@
     }
   }
 
-  &-task {
-    margin-top: 1rem;
-    background-color: rgba(94, 101, 114, 0.25);
-    border-radius: 5px;
-  }
-
   &-card {
     line-height: 1.5;
+    background: transparent;
+
+    mat-card-content {
+      padding: 0;
+
+      span {
+        font-size: clamp(0.75rem, 1vw, 1.25rem);
+      }
+    }
+
+    &-users {
+      mat-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+          padding: 0 0.5rem 0 0;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
   }
 
   .h2 {

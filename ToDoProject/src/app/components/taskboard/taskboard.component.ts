@@ -7,6 +7,8 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 import { ITask } from './../../models/task';
+import { IUser } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-taskboard',
@@ -20,11 +22,14 @@ export class TaskboardComponent implements OnInit {
   done: ITask[] = [];
   stuck: ITask[] = [];
   statuses: string[] = ['To Do', 'In Progress', 'Done', 'Stuck'];
-  
+  user: IUser | undefined;
+  users: IUser[] = [];
+  taskUserMap: { [taskId: string]: IUser[] } = {};
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -35,11 +40,27 @@ export class TaskboardComponent implements OnInit {
     if (this.taskboardId) {
       this.getAllTasks(this.taskboardId);
     }
+
+    this.userService.getAllUsers().subscribe((response) => {
+      this.users = response;
+    });
   }
 
   getAllTasks(taskboardId: string) {
     this.taskService.getAllTasks(taskboardId).subscribe((response) => {
       this.tasks = response;
+
+      this.tasks.forEach((task) => {
+        if (task['taskId'] !== undefined) {
+          this.userService
+            .getAssignedUsersForTask(task['taskId'])
+            .subscribe((users) => {
+              if (task['taskId'] !== undefined) {
+                this.taskUserMap[task['taskId']] = users;
+              }
+            });
+        }
+      });
     });
   }
 
