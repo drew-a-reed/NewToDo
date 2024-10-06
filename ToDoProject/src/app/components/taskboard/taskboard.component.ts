@@ -64,6 +64,28 @@ export class TaskboardComponent implements OnInit {
     });
   }
 
+  onTaskAdded() {
+    if (this.taskboardId) {
+      this.getAllTasks(this.taskboardId);
+    }
+  }
+
+  deleteTask(task: ITask) {
+
+    if (task['taskId']) {
+      this.taskService.deleteTask(task['taskId']).subscribe(
+        () => {
+          this.tasks = this.tasks.filter((t) => t.taskId !== task['taskId']);
+        },
+        (error) => {
+          console.error('Error deleting task:', error);
+        }
+      );
+    } else {
+      console.error('Task ID is undefined');
+    }
+  }
+
   getPriorityColor(priority: string): string {
     switch (priority) {
       case 'Low':

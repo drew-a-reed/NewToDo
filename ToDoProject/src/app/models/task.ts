@@ -7,5 +7,5 @@ export interface ITask{
   done: boolean,
   assignedDate?: any,
   dueDate?: any,
-  taskboardId: string,
+  taskboardId: string | null,
 }
