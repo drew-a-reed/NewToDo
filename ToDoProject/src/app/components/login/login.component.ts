@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   eyeIcon: string = 'visibility_off';
   loginForm!: FormGroup;
   showModal: boolean = false;
+  display: string = 'none';
   passwordState: string = 'Show';
   error: string = 'Login failed. Please check your credentials.';
   public resetPasswordEmail!: string;
@@ -73,6 +74,7 @@ export class LoginComponent implements OnInit {
           const tokenPayload = this.auth.decodeToken();
           this.userStore.setFullNameForStore(tokenPayload.unique_name);
           this.userStore.setRoleForStore(tokenPayload.role);
+          this.display = 'flex';
 
           this.router.navigate(['taskboard-picker']);
         },

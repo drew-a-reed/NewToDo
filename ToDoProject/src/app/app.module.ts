@@ -20,6 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TaskboardPickerComponent } from './components/taskboard-picker/taskboard-picker.component';
@@ -63,6 +64,7 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
     MatNativeDateModule,
     MatExpansionModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

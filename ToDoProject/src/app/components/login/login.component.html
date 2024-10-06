@@ -30,30 +30,12 @@
   </mat-card-content>
 </mat-card>
 
-
-
-<!-- <div id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
-  <div>
-    <div>
-      <div>
-        <p id="forgotPasswordModalLabel"> <span style="font-size: 25px;font-weight:700">Forget your
-            password?</span><br>
-          <small>Please provide your E-mail we will send the reset link</small>
-        </p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="">
-          <div class=""> <span class="fa fa-user p-2"></span> <input [(ngModel)]="resetPasswordEmail"
-              (ngModelChange)="checkValidEmail($event)" type="text" placeholder="Email"> </div>
-        </div>
-        <small *ngIf="!resetPasswordEmail" class="text-danger">*Email is required*</small>
-        <small *ngIf="!isValidEmail && resetPasswordEmail" class="text-danger">*Email is invalid*</small>
-      </div>
-      <div class="modal-footer">
-        <button id="closeBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="confirmToSend()" class="btn btn-primary">Send</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+<div class="container" [ngStyle]="{ 'display': display }">
+<mat-card class="spinner">
+  <mat-card-header class="h1">Give it a Minute</mat-card-header>
+  <mat-card-content class="h6">
+    It is logging in. While learning, I am using free services. Due to this, the first login will take slightly longer than you may be accustomed to.  </mat-card-content>
+  <mat-spinner>
+  </mat-spinner>
+</mat-card>
+</div>
