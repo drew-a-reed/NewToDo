@@ -27,6 +27,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
 import { TaskboardComponent } from './components/taskboard/taskboard.component';
 import { TaskStatusFilterPipe } from './pipes/task-status-filter.pipe';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TaskStatusFilterPipe } from './pipes/task-status-filter.pipe';
     TaskboardCreatorComponent,
     TaskboardComponent,
     TaskStatusFilterPipe,
+    NewTaskComponent,
   ],
   imports: [
     BrowserModule,

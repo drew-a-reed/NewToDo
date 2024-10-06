@@ -1,3 +1,6 @@
+<div class="new-task">New Task
+  <app-new-task></app-new-task>
+</div>
 <div class="taskboard" cdkDropListGroup>
   <div class="task-container" *ngFor="let status of statuses" cdkDropList [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
     <div class="h2">{{ status }}</div>
@@ -13,13 +16,13 @@
           </mat-expansion-panel-header>
           <mat-card class="task-container-card">
             <mat-card-content>
-              <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;"></div>
+              <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;margin:0.25rem 0;"></div>
               <p>{{ task.description }}</p>
               <p><span>Priority:</span> {{ task.priority }}</p>
               <p><span>Due:</span> {{ task.dueDate | date }}</p>
               <div class="task-container-card-users">
-                <p><span>Users:</span></p>
                 <mat-list *ngIf="task['taskId'] && taskUserMap[task['taskId']]" style="padding:0;" role="list">
+                  <span>Users:&nbsp;</span>
                   <mat-list-item *ngFor="let user of taskUserMap[task['taskId']]" role="listitem">
                     {{ user.firstName }}
                   </mat-list-item>
