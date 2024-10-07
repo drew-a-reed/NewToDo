@@ -6,17 +6,12 @@
     <div class="h2">{{ status }}</div>
     <div *ngFor="let task of tasks | taskStatusFilter:status" cdkDrag class="task-container-task">
       <mat-accordion multi>
-        <mat-expansion-panel>
+        <mat-expansion-panel [ngStyle]="{ 'border-color': getPriorityColor(task.priority) }" style="border-top: 1px solid">
           <mat-expansion-panel-header class="h6">
             <mat-panel-title> {{ task.title }} </mat-panel-title>
-            <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;"></div>
-            <!-- <mat-panel-description>
-              <mat-icon></mat-icon>
-            </mat-panel-description> -->
           </mat-expansion-panel-header>
           <mat-card class="task-container-card">
             <mat-card-content>
-              <div [ngStyle]="{ 'background': getPriorityColor(task.priority) }" style="height: 0.1rem;margin:0.25rem 0;"></div>
               <p>{{ task.description }}</p>
               <p><span>Priority:</span> {{ task.priority }}</p>
               <p><span>Due:</span> {{ task.dueDate | date }}</p>
