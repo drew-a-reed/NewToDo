@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCommonModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
@@ -65,6 +66,7 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
     MatExpansionModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   providers: [
     {
