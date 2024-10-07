@@ -15,7 +15,6 @@
   flex-direction: column;
   width: 80%;
   max-width: 500px;
-  min-width: 350px;
   gap: 1rem;
   border-radius: 10px;
 
@@ -59,7 +58,10 @@
   flex-direction: column;
   width: 80%;
   max-width: 500px;
-  min-width: 350px;
   gap: 1rem;
   border-radius: 10px;
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  transform: translate(0, -50%);
 }

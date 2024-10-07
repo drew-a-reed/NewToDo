@@ -13,7 +13,8 @@
 
 .logout-button {
   position: absolute;
-  right: 1rem;
+  right: 10%;
+  transform: translate(-10%, 0);
 
   @media (max-width: 430px) {
     top: 5.1rem;

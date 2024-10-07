@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['demo@email.com', Validators.required],
-      password: ['Password123!', Validators.required],
+      email: ['duser@email.com', Validators.required],
+      password: ['ThisIsThePassword123!', Validators.required],
     });
     // google.accounts.id.initialize({
     //   client_id:
@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
           this.display = 'flex';
 
           this.router.navigate(['taskboard-picker']);
+
         },
         error: (response) => {
           alert('Email/password do not match.');
