@@ -17,8 +17,12 @@ export class UserTaskboardService {
     return this.http.post<any>(`${this.baseUrl}`, userTaskboard, { headers });
   }
 
+  getTaskboardUsers(taskboardId: any){
+    return this.http.get<any>(`${this.baseUrl}${taskboardId}/users`)
+  }
+
   getUserTaskboards(userId: any){
-    return this.http.get<any>(`${this.baseUrl}${userId}`);
+    return this.http.get<any>(`${this.baseUrl}${userId}/taskboards`);
   }
 
 }

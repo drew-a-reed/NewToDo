@@ -10,6 +10,7 @@ import { ITask } from 'src/app/models/task';
 import { IUser } from 'src/app/models/user';
 import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserTaskboardService } from 'src/app/services/user-taskboard.service';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class NewTaskComponent implements OnInit {
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
+    private userTaskboardService: UserTaskboardService
   ){}
 
   ngOnInit(){
@@ -46,8 +48,10 @@ export class NewTaskComponent implements OnInit {
       this.taskboardId = val['taskboardId'];
     });
 
-    this.userService.getAllUsers().subscribe((response) => {
+    this.userTaskboardService.getTaskboardUsers(this.taskboardId).subscribe((response) => {
       this.users = response;
+      console.log("I rean", this.users);
+
     });
 
   }
