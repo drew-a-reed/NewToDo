@@ -28,6 +28,7 @@ export class NewTaskComponent implements OnInit {
   usersAssignedToTask: IUser[] = [];
   userList = new FormControl<IUser[]>([]);
   priorities: string[] = ['Low', 'Medium', 'High', 'Stuck'];
+  isPanelOpen = false;
 
   @Output() taskAdded = new EventEmitter<void>();
 
@@ -54,8 +55,6 @@ export class NewTaskComponent implements OnInit {
 
     this.userTaskboardService.getTaskboardUsers(this.taskboardId).subscribe((response) => {
       this.users = response;
-      console.log("I rean", this.users);
-
     });
 
   }
@@ -84,7 +83,7 @@ export class NewTaskComponent implements OnInit {
         }
       },
     });
-
+    this.togglePanel();
     this.taskForm.reset();
   }
 
@@ -116,6 +115,8 @@ export class NewTaskComponent implements OnInit {
   }
 
   editTask(task: ITask) {
+    this.togglePanel()
+    this.toggleEnable()
     if (task && task['taskId']) {
       this.status = task.status;
       this.taskId = task['taskId'];
@@ -137,6 +138,48 @@ export class NewTaskComponent implements OnInit {
     } else {
       console.error('Task ID is undefined');
     }
+  }
+
+  updateTask() {
+    const status = this.status || 'To Do';
+    const taskboardId = this.taskboardId;
+
+    const updatedTask: ITask = {
+      taskId: this.taskId,
+      status: status,
+      title: this.taskForm.value.task,
+      dueDate: this.taskForm.value.date,
+      description: this.taskForm.value.description,
+      priority: this.taskForm.value.priority,
+      done: false,
+      taskboardId: taskboardId
+    };
+
+    this.taskService.updateTask(updatedTask).subscribe({
+      next: (response) => {
+        const taskId = response['taskId'];
+        this.addUserTask(taskId);
+        this.taskForm.reset();
+        this.isEditEnabled = false;
+        this.togglePanel();
+        this.taskAdded.emit();
+
+        if (this.taskboardId) {
+          // this.getAllTasks(this.taskboardId);
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+  togglePanel() {
+    this.isPanelOpen = !this.isPanelOpen;
+  }
+
+  toggleEnable() {
+    this.isEditEnabled = !this.isEditEnabled;
   }
 
 }

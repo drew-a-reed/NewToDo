@@ -1,5 +1,5 @@
 <mat-accordion multi>
-  <mat-expansion-panel class="container">
+  <mat-expansion-panel class="container"  [expanded]="isPanelOpen">
     <mat-expansion-panel-header>
       <mat-panel-title class="h3"> New Task </mat-panel-title>
     </mat-expansion-panel-header>
@@ -35,8 +35,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button (click)="addTask()" mat-raised-button [disabled]="taskForm.invalid"
+      <button *ngIf="!isEditEnabled" (click)="addTask()" mat-raised-button [disabled]="taskForm.invalid"
           color="primary">Add</button>
+          <button *ngIf="isEditEnabled" (click)="updateTask()" mat-raised-button [disabled]="taskForm.invalid"
+          color="primary">Update</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>
