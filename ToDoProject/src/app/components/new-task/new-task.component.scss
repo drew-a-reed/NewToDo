@@ -1,5 +1,6 @@
 .container {
   background-color: rgba(94, 101, 114, 0.25);
+  width: clamp(350px, 25vw, 30vw);
 
   .h3 {
     justify-content: center;

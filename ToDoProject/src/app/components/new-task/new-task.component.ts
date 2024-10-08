@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -21,9 +21,13 @@ import { UserTaskboardService } from 'src/app/services/user-taskboard.service';
 export class NewTaskComponent implements OnInit {
   taskForm!: FormGroup;
   taskboardId: string | null = null;
+  taskId?: string;
+  status?: string;
+  isEditEnabled: boolean = false;
   users: IUser[] = [];
-  priorities: string[] = ['Low', 'Medium', 'High', 'Stuck'];
+  usersAssignedToTask: IUser[] = [];
   userList = new FormControl<IUser[]>([]);
+  priorities: string[] = ['Low', 'Medium', 'High', 'Stuck'];
 
   @Output() taskAdded = new EventEmitter<void>();
 
@@ -111,6 +115,28 @@ export class NewTaskComponent implements OnInit {
     this.userList.reset();
   }
 
+  editTask(task: ITask) {
+    if (task && task['taskId']) {
+      this.status = task.status;
+      this.taskId = task['taskId'];
+      this.taskForm.controls['task'].setValue(task.title);
+      this.taskForm.controls['date'].setValue(task.dueDate);
+      this.taskForm.controls['description'].setValue(task.description);
+      this.taskForm.controls['priority'].setValue(task.priority);
+      this.isEditEnabled = true;
 
+      this.userService
+        .getAssignedUsersForTask(task['taskId'])
+        .subscribe((users) => {
+          this.usersAssignedToTask = users;
+          const selectedUsers = users.map(
+            (user) => this.users.find((u) => u['userId'] === user['userId'])!
+          );
+          this.userList.setValue(selectedUsers);
+        });
+    } else {
+      console.error('Task ID is undefined');
+    }
+  }
 
 }

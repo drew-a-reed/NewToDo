@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -9,6 +9,7 @@ import { TaskService } from 'src/app/services/task.service';
 import { ITask } from './../../models/task';
 import { IUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { NewTaskComponent } from '../new-task/new-task.component';
 
 @Component({
   selector: 'app-taskboard',
@@ -25,6 +26,9 @@ export class TaskboardComponent implements OnInit {
   user: IUser | undefined;
   users: IUser[] = [];
   taskUserMap: { [taskId: string]: IUser[] } = {};
+
+  @ViewChild('newTaskComponent') newTaskComponent: NewTaskComponent | undefined;
+  @Output() taskEdit = new EventEmitter<ITask>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -83,6 +87,13 @@ export class TaskboardComponent implements OnInit {
       );
     } else {
       console.error('Task ID is undefined');
+    }
+  }
+
+  onEditTask(task: ITask): void {
+    this.taskEdit.emit(task);
+    if (this.newTaskComponent) {
+      this.newTaskComponent.editTask(task);
     }
   }
 

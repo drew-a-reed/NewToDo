@@ -1,5 +1,5 @@
 <div class="new-task">
-  <app-new-task (taskAdded)="onTaskAdded()"></app-new-task>
+  <app-new-task (taskAdded)="onTaskAdded()" #newTaskComponent></app-new-task>
 </div>
 <div class="taskboard" cdkDropListGroup>
   <div class="task-container" *ngFor="let status of statuses" cdkDropList [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
@@ -24,7 +24,10 @@
                 </mat-list>
               </div>
             </mat-card-content>
-            <button mat-icon-button color="warn" (click)="deleteTask(task)"><mat-icon>delete</mat-icon></button>
+            <div class="buttons">
+              <button mat-icon-button color="warn" (click)="deleteTask(task)" matTooltip="Delete Task"><mat-icon>delete</mat-icon></button>
+              <button mat-icon-button color="" (click)="onEditTask(task)" matTooltip="Edit Task"><mat-icon>edit</mat-icon></button>
+            </div>
           </mat-card>
         </mat-expansion-panel>
       </mat-accordion>
