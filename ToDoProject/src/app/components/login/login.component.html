@@ -30,12 +30,13 @@
   </mat-card-content>
 </mat-card>
 
-<div class="container" [ngStyle]="{ 'display': display }">
-<mat-card class="spinner">
+<div class="container" [ngStyle]="{ 'display': display }" style="height: 0;">
+<mat-card class="warning">
   <mat-card-header class="h1">Give it a Minute</mat-card-header>
   <mat-card-content class="h6">
-    It is logging in. While learning, I am using free services. Due to this, the first login will take slightly longer than you may be accustomed to.  </mat-card-content>
-  <mat-spinner>
-  </mat-spinner>
+    It may take around a minute to login. While learning, I am utilizing the free services offered by Azure. Due to this
+      the app will 'go to sleep' every 20 minutes. So, just give it a minute.
+  </mat-card-content>
+<button (click)="hideWarning()" mat-raised-button color="primary">OK</button>
 </mat-card>
 </div>

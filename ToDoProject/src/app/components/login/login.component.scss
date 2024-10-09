@@ -49,7 +49,7 @@
   }
 }
 
-.spinner {
+.warning {
   background-color: #5e6572;
   padding: 0.5rem;
   display: flex;
@@ -63,5 +63,5 @@
   position: absolute;
   margin: auto;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -25%);
 }

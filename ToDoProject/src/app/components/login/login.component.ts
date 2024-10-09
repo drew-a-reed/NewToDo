@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   eyeIcon: string = 'visibility_off';
   loginForm!: FormGroup;
   showModal: boolean = false;
-  display: string = 'none';
+  display: string = 'flex';
   passwordState: string = 'Show';
   error: string = 'Login failed. Please check your credentials.';
   public resetPasswordEmail!: string;
@@ -41,19 +41,6 @@ export class LoginComponent implements OnInit {
       email: ['duser@email.com', Validators.required],
       password: ['ThisIsThePassword123!', Validators.required],
     });
-    // google.accounts.id.initialize({
-    //   client_id:
-    //     '257479571203-af1404qragk94fe2fpnj60s3616t7k8c.apps.googleusercontent.com',
-    //   callback: (response: any) => {
-    //     this.handleLogin(response);
-    //   },
-    // });
-
-    // google.accounts.id.renderButton(document.getElementById('google-btn'), {
-    //   type: 'icon',
-    //   theme: 'filled_blue',
-    //   size: 'large',
-    // });
   }
 
   hideShowPassword() {
@@ -74,7 +61,6 @@ export class LoginComponent implements OnInit {
           const tokenPayload = this.auth.decodeToken();
           this.userStore.setFullNameForStore(tokenPayload.unique_name);
           this.userStore.setRoleForStore(tokenPayload.role);
-          this.display = 'flex';
 
           this.router.navigate(['taskboard-picker']);
 
@@ -132,6 +118,10 @@ export class LoginComponent implements OnInit {
 
       this.onLogin();
     }
+  }
+
+  hideWarning(){
+    this.display = 'none';
   }
 
 }
