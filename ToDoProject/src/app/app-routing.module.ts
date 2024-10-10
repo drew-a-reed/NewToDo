@@ -6,8 +6,13 @@ import { TaskboardPickerComponent } from './components/taskboard-picker/taskboar
 import { AuthGuard } from 'src/guards/auth.guard';
 import { TaskboardCreatorComponent } from './components/taskboard-creator/taskboard-creator.component';
 import { TaskboardComponent } from './components/taskboard/taskboard.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
   {
     path: 'taskboard',
     component: TaskboardComponent,
