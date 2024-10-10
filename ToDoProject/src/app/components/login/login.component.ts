@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   eyeIcon: string = 'visibility_off';
   loginForm!: FormGroup;
   showModal: boolean = false;
-  display: string = 'flex';
   passwordState: string = 'Show';
   error: string = 'Login failed. Please check your credentials.';
   public resetPasswordEmail!: string;
@@ -118,10 +117,6 @@ export class LoginComponent implements OnInit {
 
       this.onLogin();
     }
-  }
-
-  hideWarning(){
-    this.display = 'none';
   }
 
 }
