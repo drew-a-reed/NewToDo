@@ -76,6 +76,8 @@ export class NewTaskComponent implements OnInit {
         const taskId = response['taskId'];
         if (taskId) {
           this.addUserTask(taskId);
+          this.togglePanel();
+          this.taskForm.reset();
           console.log("Task added and user assigned.");
           this.taskAdded.emit();
         } else {
@@ -83,8 +85,6 @@ export class NewTaskComponent implements OnInit {
         }
       },
     });
-    this.togglePanel();
-    this.taskForm.reset();
   }
 
   addUserTask(taskId: string) {
@@ -99,7 +99,6 @@ export class NewTaskComponent implements OnInit {
         next: () => {
           this.userService.addUserTasks(selectedUserIds, taskId).subscribe({
             next: (response) => {
-              // Task assignment logic here
             },
             error: (error) => {
               console.error('Error adding user tasks:', error);
@@ -116,7 +115,6 @@ export class NewTaskComponent implements OnInit {
 
   editTask(task: ITask) {
     this.togglePanel()
-    this.toggleEnable()
     if (task && task['taskId']) {
       this.status = task.status;
       this.taskId = task['taskId'];
@@ -178,8 +176,8 @@ export class NewTaskComponent implements OnInit {
     this.isPanelOpen = !this.isPanelOpen;
   }
 
-  toggleEnable() {
-    this.isEditEnabled = !this.isEditEnabled;
+  resetTask() {
+    this.taskForm.reset();
   }
 
 }

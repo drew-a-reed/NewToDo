@@ -11,3 +11,9 @@
   flex-direction: column;
   padding-top: 1rem;
 }
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+}
