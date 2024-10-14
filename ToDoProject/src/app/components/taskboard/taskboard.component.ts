@@ -4,7 +4,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 import { ITask } from './../../models/task';
 import { IUser } from 'src/app/models/user';
@@ -32,6 +32,7 @@ export class TaskboardComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private taskService: TaskService,
     private userService: UserService
   ) {}
@@ -48,6 +49,15 @@ export class TaskboardComponent implements OnInit {
     this.userService.getAllUsers().subscribe((response) => {
       this.users = response;
     });
+
+    if(!this.isLoggedIn()){
+      this.router.navigate(['login']);
+    }
+
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 
   getAllTasks(taskboardId: string) {

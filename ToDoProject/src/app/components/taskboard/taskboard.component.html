@@ -1,21 +1,19 @@
-<div class="new-task">
-  <app-new-task (taskAdded)="onTaskAdded()" #newTaskComponent></app-new-task>
-</div>
+<app-new-task (taskAdded)="onTaskAdded()" #newTaskComponent></app-new-task>
 <div class="taskboard" cdkDropListGroup>
-  <div class="task-container" *ngFor="let status of statuses" cdkDropList [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
+  <div class="taskboard-status" *ngFor="let status of statuses" cdkDropList [cdkDropListData]="tasks | taskStatusFilter:status" (cdkDropListDropped)="drop($event, status)">
     <div class="h2">{{ status }}</div>
-    <div *ngFor="let task of tasks | taskStatusFilter:status" cdkDrag class="task-container-task">
+    <div *ngFor="let task of tasks | taskStatusFilter:status" cdkDrag class="taskboard-status-task">
       <mat-accordion multi>
         <mat-expansion-panel [ngStyle]="{ 'border-color': getPriorityColor(task.priority) }" style="border-top: 1px solid">
           <mat-expansion-panel-header class="h6">
             <mat-panel-title> {{ task.title }} </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-card class="task-container-card">
+          <mat-card class="taskboard-status-task-card">
             <mat-card-content>
               <p>{{ task.description }}</p>
               <p><span>Priority:</span> {{ task.priority }}</p>
               <p><span>Due:</span> {{ task.dueDate | date }}</p>
-              <div class="task-container-card-users">
+              <div class="taskboard-status-card-users">
                 <mat-list *ngIf="task['taskId'] && taskUserMap[task['taskId']]" style="padding:0;" role="list">
                   <span>Users:&nbsp;</span>
                   <mat-list-item *ngFor="let user of taskUserMap[task['taskId']]" role="listitem">

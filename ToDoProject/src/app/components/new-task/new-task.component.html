@@ -1,9 +1,9 @@
-<mat-accordion multi>
-  <mat-expansion-panel class="container" [expanded]="isPanelOpen">
+<mat-accordion multi class="new-task">
+  <mat-expansion-panel [expanded]="isPanelOpen" class="new-task--panel">
     <mat-expansion-panel-header>
       <mat-panel-title class="h3"> New Task </mat-panel-title>
     </mat-expansion-panel-header>
-    <form [formGroup]="taskForm" class="new-task">
+    <form [formGroup]="taskForm" class="new-task--form">
       <mat-form-field>
         <mat-label>Task Name</mat-label>
         <input formControlName="task" matInput>

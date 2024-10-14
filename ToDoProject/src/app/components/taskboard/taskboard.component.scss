@@ -1,69 +1,64 @@
-.new-task {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  flex-direction: column;
-  align-items: center;
-}
-
 .taskboard {
   display: flex;
   justify-content: space-around;
   margin: 1rem 1rem 0;
   flex-wrap: wrap;
   gap: 1rem;
-}
 
-.task-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: clamp(350px, 20vw, 25vw);
-  flex-direction: column;
-  margin-top: 1rem;
-
-  &-task {
+  &-status {
+    display: flex;
+    flex-wrap: wrap;
+    width: clamp(350px, 20vw, 25vw);
+    flex-direction: column;
     margin-top: 1rem;
-    background-color: rgba(94, 101, 114, 0.25);
-    border-radius: 5px;
-  }
 
-  mat-expansion-panel {
-    background-color: transparent;
-    padding: 1rem 0;
+    &-task {
+      margin-top: 1rem;
+      background-color: rgba(94, 101, 114, 0.25);
+      border-radius: 5px;
 
-    &-header {
-      padding: 1rem;
-    }
-  }
+      &-card {
+        line-height: 1.5;
+        background: transparent;
 
-  &-card {
-    line-height: 1.5;
-    background: transparent;
+        mat-card-content {
+          padding: 0;
 
-    mat-card-content {
-      padding: 0;
+          span {
+            font-size: clamp(0.75rem, 1vw, 1.25rem);
+          }
+        }
 
-      span {
-        font-size: clamp(0.75rem, 1vw, 1.25rem);
-      }
-    }
+        &-users {
+          mat-list {
+            display: flex;
+            flex-wrap: wrap;
 
-    &-users {
-      mat-list {
-        display: flex;
-        flex-wrap: wrap;
-
-        &-item {
-          padding: 0 0.5rem 0 0;
-          height: auto;
-          width: auto;
+            &-item {
+              padding: 0 0.5rem 0 0;
+              height: auto;
+              width: auto;
+            }
+          }
         }
       }
     }
-  }
 
-  .h2 {
-    text-align: center;
-  }
+    mat-expansion-panel {
+      background-color: transparent;
+      padding: 1rem 0;
 
+      &-header {
+        padding: 1rem;
+      }
+    }
+
+    .h2 {
+      text-align: center;
+    }
+  }
 }
+
+.h6 {
+  background-color: transparent !important;
+  }

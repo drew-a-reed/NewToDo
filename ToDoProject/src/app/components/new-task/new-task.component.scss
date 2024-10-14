@@ -1,15 +1,22 @@
-.container {
-  background-color: rgba(94, 101, 114, 0.25);
-  width: clamp(350px, 25vw, 30vw);
+.new-task {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 
   .h3 {
     justify-content: center;
   }
-}
-.new-task {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1rem;
+
+  &--panel {
+    background-color: rgba(94, 101, 114, 0.25);
+    width: clamp(350px, 25vw, 30vw);
+  }
+
+  &--form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+  }
 }
 
 .buttons {
