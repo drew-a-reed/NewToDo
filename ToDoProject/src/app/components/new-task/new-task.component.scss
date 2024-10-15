@@ -12,6 +12,10 @@
     width: clamp(350px, 25vw, 30vw);
   }
 
+  &--header {
+    background-color: rgba(94, 101, 114, 0.25) !important;
+  }
+
   &--form {
     display: flex;
     flex-direction: column;

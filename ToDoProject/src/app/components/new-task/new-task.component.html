@@ -1,6 +1,6 @@
 <mat-accordion multi class="new-task">
   <mat-expansion-panel [expanded]="isPanelOpen" class="new-task--panel">
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header class="new-task--header">
       <mat-panel-title class="h3"> New Task </mat-panel-title>
     </mat-expansion-panel-header>
     <form [formGroup]="taskForm" class="new-task--form">
@@ -39,9 +39,9 @@
         <button *ngIf="!isEditEnabled" (click)="addTask()" mat-raised-button [disabled]="taskForm.invalid"
           color="primary">Add</button>
         <button (click)="resetTask()" mat-raised-button color="warn">Clear Task</button>
-      </div>
       <button *ngIf="isEditEnabled" (click)="updateTask()" mat-raised-button [disabled]="taskForm.invalid"
         color="primary">Update</button>
+      </div>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

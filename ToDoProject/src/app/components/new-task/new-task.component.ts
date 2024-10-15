@@ -75,6 +75,7 @@ export class NewTaskComponent implements OnInit {
       next: (response) => {
         const taskId = response['taskId'];
         if (taskId) {
+          this.togglePanel();
           this.addUserTask(taskId);
           this.togglePanel();
           this.taskForm.reset();
@@ -177,7 +178,12 @@ export class NewTaskComponent implements OnInit {
   }
 
   resetTask() {
+    this.isEditEnabled = false;
     this.taskForm.reset();
+    this.users = [];
+    this.usersAssignedToTask = [];
+    this.userList.reset();
   }
+
 
 }
