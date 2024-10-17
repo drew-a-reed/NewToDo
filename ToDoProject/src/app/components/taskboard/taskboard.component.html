@@ -13,7 +13,7 @@
               <p>{{ task.description }}</p>
               <p><span>Priority:</span> {{ task.priority }}</p>
               <p><span>Due:</span> {{ task.dueDate | date }}</p>
-              <div class="taskboard-status-card-users">
+              <div class="taskboard-status-task-card-users">
                 <mat-list *ngIf="task['taskId'] && taskUserMap[task['taskId']]" style="padding:0;" role="list">
                   <span>Users:&nbsp;</span>
                   <mat-list-item *ngFor="let user of taskUserMap[task['taskId']]" role="listitem">

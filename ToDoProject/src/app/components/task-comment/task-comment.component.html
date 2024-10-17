@@ -1,5 +1,14 @@
-<div class="container">
-  <div *ngFor="let comment of taskComments">
-    <div>{{comment.comment}}</div>
-  </div>
-</div>
+<mat-accordion>
+  <mat-expansion-panel class="comments">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Comments ({{ taskComments.length }}) </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let comment of taskComments" class="comments-comment">
+      <mat-card class="comments-comment-card" [ngStyle]="{ 'background-color': getBackgroundColor(comment.userId) }">
+        <mat-card-content>
+          <p>{{ comment.comment }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
