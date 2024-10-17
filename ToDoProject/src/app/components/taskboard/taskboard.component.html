@@ -21,6 +21,9 @@
                   </mat-list-item>
                 </mat-list>
               </div>
+              <div class="taskboard-status-card-comments">
+                <app-task-comment [taskId]="task.taskId"></app-task-comment>
+              </div>
             </mat-card-content>
             <div class="buttons">
               <button mat-icon-button color="warn" (click)="deleteTask(task)" matTooltip="Delete Task"><mat-icon>delete</mat-icon></button>

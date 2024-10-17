@@ -32,6 +32,7 @@ import { TaskStatusFilterPipe } from './pipes/task-status-filter.pipe';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { WarningComponent } from './components/warning/warning.component';
+import { TaskCommentComponent } from './components/task-comment/task-comment.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { WarningComponent } from './components/warning/warning.component';
     NewTaskComponent,
     ForgotPasswordComponent,
     WarningComponent,
+    TaskCommentComponent,
   ],
   imports: [
     BrowserModule,

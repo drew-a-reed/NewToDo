@@ -185,5 +185,4 @@ export class NewTaskComponent implements OnInit {
     this.userList.reset();
   }
 
-
 }
