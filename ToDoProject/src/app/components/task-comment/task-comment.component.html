@@ -14,5 +14,5 @@
       </mat-card>
     </div>
   </mat-expansion-panel>
-  <app-new-task-comment [taskId]="taskId"></app-new-task-comment>
+  <app-new-task-comment [taskId]="taskId" (commentAdded)="onCommentAdded()" #newTaskCommentComponent></app-new-task-comment>
 </mat-accordion>

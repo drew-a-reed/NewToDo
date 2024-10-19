@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -11,7 +11,7 @@ import { IUser } from 'src/app/models/user';
 import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserTaskboardService } from 'src/app/services/user-taskboard.service';
-
+import { NewTaskCommentComponent } from '../new-task-comment/new-task-comment.component';
 
 @Component({
   selector: 'app-new-task',
@@ -30,6 +30,7 @@ export class NewTaskComponent implements OnInit {
   priorities: string[] = ['Low', 'Medium', 'High', 'Stuck'];
   isPanelOpen = false;
 
+  @ViewChild('newTaskCommentComponent') NewTaskCommentComponent: NewTaskCommentComponent | undefined;
   @Output() taskAdded = new EventEmitter<void>();
 
   constructor(

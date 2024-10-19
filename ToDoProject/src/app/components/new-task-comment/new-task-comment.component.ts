@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -9,8 +9,6 @@ import ValidateForm from 'src/app/helpers/validateform';
 import { TaskCommentService } from 'src/app/services/task-comment.service';
 import { ITaskComment } from 'src/app/models/task-comment.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
-
 
 @Component({
   selector: 'app-new-task-comment',
@@ -23,13 +21,14 @@ export class NewTaskCommentComponent implements OnInit {
   userName: string | null = null;
 
   @Input() taskId?: string;
+  @Output() commentAdded = new EventEmitter<void>();
+
 
   constructor(
     private taskCommentService: TaskCommentService,
     private fb: FormBuilder,
-    private auth: AuthService,
-    private userService: UserService,
-  ){}
+    private auth: AuthService
+    ){}
 
   ngOnInit(){
     this.userId = this.auth.getUserId();
@@ -49,7 +48,15 @@ export class NewTaskCommentComponent implements OnInit {
       createdDate: new Date()
     }
 
-    this.taskCommentService.addComment(newComment)
+    this.taskCommentService.addComment(newComment).subscribe({
+      next: (response) => {
+        console.log('Comment added successfully:', response);
+        this.commentAdded.emit();
+      },
+      error: (error) => {
+        console.error('Error adding comment:', error);
+      },
+    });
   }
 
 }

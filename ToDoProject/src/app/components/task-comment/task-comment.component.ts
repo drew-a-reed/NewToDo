@@ -31,6 +31,14 @@ export class TaskCommentComponent implements OnInit {
 
   }
 
+  onCommentAdded() {
+    if(this.taskId){
+      this.taskCommentService.getAllComments(this.taskId).subscribe((response) => {
+        this.taskComments = response;
+      })
+    }
+  }
+
   getBackgroundColor(userId: string): string {
 
     if(userId == this.userId){
