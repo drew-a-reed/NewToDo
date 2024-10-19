@@ -3,12 +3,16 @@
     <mat-expansion-panel-header>
       <mat-panel-title> Comments ({{ taskComments.length }}) </mat-panel-title>
     </mat-expansion-panel-header>
-    <div *ngFor="let comment of taskComments" class="comments-comment">
-      <mat-card class="comments-comment-card" [ngStyle]="{ 'background-color': getBackgroundColor(comment.userId) }">
+    <div *ngFor="let comment of taskComments" [ngStyle]="{ 'justify-content': getCommenter(comment.userId) }"
+      style="display: flex;margin: 0.5rem 0;">
+      <mat-card [ngStyle]="{ 'background-color': getBackgroundColor(comment.userId) }" class="comments-comment">
+        <p style="margin:0.25rem"><span class="comments-comment--name">{{ comment.userName }}</span> said</p>
         <mat-card-content>
-          <p>{{ comment.comment }}</p>
+          <p class="comments-comment--comment">{{ comment.comment }}</p>
         </mat-card-content>
+        <p style="margin:0.25rem">at {{ comment.createdDate | date: 'HH:mm MM/dd' }}</p>
       </mat-card>
     </div>
   </mat-expansion-panel>
+  <app-new-task-comment [taskId]="taskId"></app-new-task-comment>
 </mat-accordion>

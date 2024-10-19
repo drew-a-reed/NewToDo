@@ -21,10 +21,6 @@ export class UserService {
     return this.http.get<IUser>(`${this.baseUrl}user/${userId}`);
   }
 
-  getUserNameById(userId: string): Observable<string> {
-    return this.http.get<string>(`${this.baseUrl}user/name/${userId}`);
-  }
-
   addUserTasks(userIds: string[], taskId: string) {
     const userTasks = userIds.map((userId) => {
       return { userId, taskId: taskId };

@@ -1,0 +1,10 @@
+<form [formGroup]="taskCommentForm">
+  <mat-form-field>
+    <mat-label>New Comment</mat-label>
+    <input formControlName="comment" matInput>
+  </mat-form-field>
+  <div class="buttons">
+    <button (click)="addComment()" mat-raised-button [disabled]="taskCommentForm.invalid"
+    color="primary">Add Comment</button>
+  </div>
+</form>

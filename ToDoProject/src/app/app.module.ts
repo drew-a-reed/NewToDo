@@ -33,6 +33,7 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { WarningComponent } from './components/warning/warning.component';
 import { TaskCommentComponent } from './components/task-comment/task-comment.component';
+import { NewTaskCommentComponent } from './components/new-task-comment/new-task-comment.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { TaskCommentComponent } from './components/task-comment/task-comment.com
     ForgotPasswordComponent,
     WarningComponent,
     TaskCommentComponent,
+    NewTaskCommentComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,3 @@
-declare var google: any;
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -69,22 +68,22 @@ export class SignUpComponent implements OnInit {
     return JSON.parse(atob(token.split('.')[1]));
   }
 
-  handleLogin(response: any) {
-    if (response) {
-      const payload = this.decodeToken(response.credential);
-      var email = payload.email;
-      var firstName = payload.given_name;
-      var lastName = payload.family_name;
-      var password = payload.aud + '@S';
+  // handleLogin(response: any) {
+  //   if (response) {
+  //     const payload = this.decodeToken(response.credential);
+  //     var email = payload.email;
+  //     var firstName = payload.given_name;
+  //     var lastName = payload.family_name;
+  //     var password = payload.aud + '@S';
 
-      this.signupForm = this.formBuilder.group({
-        firstName: [firstName, Validators.required],
-        lastName: [lastName, Validators.required],
-        email: [email, Validators.required],
-        password: [password, Validators.required],
-      });
+  //     this.signupForm = this.formBuilder.group({
+  //       firstName: [firstName, Validators.required],
+  //       lastName: [lastName, Validators.required],
+  //       email: [email, Validators.required],
+  //       password: [password, Validators.required],
+  //     });
 
-      this.onSignup();
-    }
-  }
+  //     this.onSignup();
+  //   }
+  // }
 }
