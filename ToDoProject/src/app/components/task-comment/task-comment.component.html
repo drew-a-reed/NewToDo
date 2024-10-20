@@ -11,8 +11,13 @@
           <p class="comments-comment--comment">{{ comment.comment }}</p>
         </mat-card-content>
         <p style="margin:0.25rem">at {{ comment.createdDate | date: 'HH:mm MM/dd' }}</p>
+        <button *ngIf="isUserComment(comment) && comment.commentId !== undefined"
+          (click)="deleteComment(comment.commentId)" mat-raised-button color="primary">
+          Delete
+        </button>
       </mat-card>
     </div>
+    <app-new-task-comment [taskId]="taskId" (commentAdded)="onCommentAdded()"
+    #newTaskCommentComponent></app-new-task-comment>
   </mat-expansion-panel>
-  <app-new-task-comment [taskId]="taskId" (commentAdded)="onCommentAdded()" #newTaskCommentComponent></app-new-task-comment>
 </mat-accordion>

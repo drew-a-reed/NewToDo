@@ -51,6 +51,7 @@ export class NewTaskCommentComponent implements OnInit {
     this.taskCommentService.addComment(newComment).subscribe({
       next: (response) => {
         console.log('Comment added successfully:', response);
+        this.taskCommentForm.reset();
         this.commentAdded.emit();
       },
       error: (error) => {

@@ -24,7 +24,8 @@ export class TaskCommentService {
   //   return this.http.put<ITaskComment>(`${this.baseUrl}taskcomment/${comment.commentId}`, comment);
   // }
 
-  // deleteComment(commentId: string){
-  //   return this.http.delete<ITaskComment>(`${this.baseUrl}taskcomment/${commentId}`)
-  // }
+  deleteComment(commentId: number) {
+    return this.http.delete<ITaskComment>(`${this.baseUrl}taskcomment/${commentId}`);
+  }
+
 }

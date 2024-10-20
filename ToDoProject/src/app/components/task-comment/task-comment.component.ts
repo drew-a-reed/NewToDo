@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ITaskComment } from './../../models/task-comment.model';
 import { TaskCommentService } from 'src/app/services/task-comment.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-task-comment',
@@ -31,11 +30,38 @@ export class TaskCommentComponent implements OnInit {
 
   }
 
+  isUserComment(comment: ITaskComment): boolean {
+    return this.userId === comment.userId;
+  }
   onCommentAdded() {
     if(this.taskId){
       this.taskCommentService.getAllComments(this.taskId).subscribe((response) => {
         this.taskComments = response;
       })
+    }
+  }
+
+  deleteComment(commentId: number | undefined) {
+    if (commentId !== undefined) {
+      this.taskCommentService.deleteComment(commentId).subscribe(
+        () => {
+          if (this.taskId) {
+            this.taskCommentService.getAllComments(this.taskId).subscribe((response) => {
+              this.taskComments = response;
+            });
+          }
+        },
+        (error) => {
+          if (this.taskId) {
+            this.taskCommentService.getAllComments(this.taskId).subscribe((response) => {
+              this.taskComments = response;
+            });
+          }
+          console.error('Error deleting comment:', error);
+        }
+      );
+    } else {
+      console.error('Comment ID is undefined');
     }
   }
 
