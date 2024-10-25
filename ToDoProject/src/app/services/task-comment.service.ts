@@ -13,11 +13,11 @@ export class TaskCommentService {
   constructor(private http: HttpClient) {}
 
   getAllComments(taskId: string){
-    return this.http.get<ITaskComment[]>(`${this.baseUrl}taskcomment/${taskId}`);
+    return this.http.get<ITaskComment[]>(`${this.baseUrlDev}taskcomment/${taskId}`);
   }
 
   addComment(comment: ITaskComment) {
-    return this.http.post<ITaskComment>(`${this.baseUrl}taskcomment`, comment);
+    return this.http.post<ITaskComment>(`${this.baseUrlDev}taskcomment`, comment);
   }
 
   // editComment(comment: ITaskComment) {
