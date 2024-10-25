@@ -21,11 +21,11 @@ export class AuthService {
    }
 
   signUp(userObj:any): Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}register`, userObj);
+    return this.http.post<any>(`${this.baseUrlDev}register`, userObj);
   }
 
   login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj);
+    return this.http.post<any>(`${this.baseUrlDev}authenticate`, loginObj);
   }
 
   storeToken(tokenValue: string){
@@ -79,6 +79,6 @@ export class AuthService {
   }
 
   renewToken(tokenApi: TokenApiModel){
-    return this.http.post<any>(`${this.baseUrl}refresh`, tokenApi);
+    return this.http.post<any>(`${this.baseUrlDev}refresh`, tokenApi);
   }
 }
