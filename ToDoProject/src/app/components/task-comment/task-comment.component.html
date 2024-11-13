@@ -10,11 +10,13 @@
         <mat-card-content>
           <p class="comments-comment--comment">{{ comment.comment }}</p>
         </mat-card-content>
+        <div class="test">
         <p style="margin:0.25rem">at {{ comment.createdDate | date: 'HH:mm MM/dd' }}</p>
         <button *ngIf="isUserComment(comment) && comment.commentId !== undefined"
           (click)="deleteComment(comment.commentId)" mat-raised-button color="primary">
           Delete
         </button>
+      </div>
       </mat-card>
     </div>
     <app-new-task-comment [taskId]="taskId" (commentAdded)="onCommentAdded()"

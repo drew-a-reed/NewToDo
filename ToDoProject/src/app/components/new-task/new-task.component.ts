@@ -78,10 +78,10 @@ export class NewTaskComponent implements OnInit {
         if (taskId) {
           this.togglePanel();
           this.addUserTask(taskId);
-          this.togglePanel();
           this.taskForm.reset();
           console.log("Task added and user assigned.");
           this.taskAdded.emit();
+          this.togglePanel();
         } else {
           console.error('Task ID is undefined');
         }
